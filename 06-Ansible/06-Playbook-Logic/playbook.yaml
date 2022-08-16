@@ -1,0 +1,50 @@
+---
+
+- hosts: "prod:&web"
+  name: WebServer Deployment
+  tasks: 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present
+    when:  ansible_os_family == "Debian"
+
+  - name: Install HTTPD Packages
+    yum: name=httpd state=present
+    when:  ansible_os_family == "RedHat"
+
+  - name: Deploy Custom Web Page 
+    copy: src=files/index.html dest=/var/www/html/index.html 
+
+  - name: Deploy Custom info2 Page 
+    template: src=templates/info.j2 dest=/var/www/html/info-2.html 
+
+  - name: Start HTTPD Service 
+    service: name=httpd state=started
+    when:  ansible_os_family == "RedHat"
+ 
+  - name: Start Apache Service 
+    service: name=apache2 state=started 
+    when:  ansible_os_family == "Debian"
+
+  - name: Check who AM I. 
+    command: whoami
+    register: username
+
+  - name: User Name is 
+    debug: var=username 
+
+  - name: Check the Web File avaliability
+    command: ls /var/www/html/netmagics.html
+    register: result
+    ignore_errors: yes
+
+
+  - debug: msg="Unable to locate file netmagics.html" 
+    when: result|failed
+
+  - debug: msg="The file has been locate filename - netmagics.html" 
+    when: result|success
+
+  - name: Deploy Missing netmagics.html file to the respetive remote servers 
+    copy: src=files/netmagics.html dest=/var/www/html/netmagics.html 
+    when: result|failed
+

@@ -1,0 +1,16 @@
+---
+
+- name: Using a REST API
+  become: false
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: “Let’s call an API”
+
+    - name: Test Appi Check 
+      uri:
+       url: https://api.chucknorris.io/jokes/random 
+       method: GET
+       validate_certs: false

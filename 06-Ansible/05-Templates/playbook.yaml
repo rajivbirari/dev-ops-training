@@ -1,0 +1,26 @@
+---
+
+- hosts: "prod:&web"
+  name: WebServer Deployment
+  tasks: 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present
+
+  - name: Deploy Custom Web Page 
+    copy: src=files/index.html dest=/var/www/html/index.html 
+
+  - name: Deploy Custom info Page 
+    copy: src=templates/info.j2 dest=/var/www/html/info.html 
+
+  - name: Deploy Custom info2 Page 
+    template: src=templates/info.j2 dest=/var/www/html/info-2.html 
+
+  - name: Start Apache Service 
+    service: name=apache2 state=started 
+
+
+- hosts: "prod"
+  name: Kernel Check
+  tasks:
+  - name: Check the Kernel Details
+    command: 'uname -a'  

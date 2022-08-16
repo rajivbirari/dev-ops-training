@@ -1,0 +1,15 @@
+# Please make sure you run the following permission command: 
+# chmod 777 -R /data/jenkins
+
+version: '3'
+services:
+  artifactory:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+     - 9090:8080
+     - 50000:50000
+    volumes:
+     - /data/jenkins:/var/jenkins_home
+    restart: always
+

@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+    
+    environment {
+     Project_Path = '03-App-Code/petclinic-code'
+    }
+    
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        
+       
+       stage('Git CheckOut') {
+           steps {
+                 git branch: 'main', url: 'https://github.com/amitvashisttech/devops-netmagic-08-Aug-2022.git'
+           }
+               
+        }    
+    
+   
+        
+      
+       stage('MAVEN - Clean') {
+           steps {
+               dir(Project_Path) {
+                 sh 'mvn clean '
+               }
+            }
+        }
+        
+        stage('MAVEN - Compile') {
+           steps {
+                dir(Project_Path) {
+                 sh 'mvn compile '
+               }
+           }
+        } 
+        
+        stage('MAVEN - Test') {
+           steps {
+                dir(Project_Path) {
+                 sh 'mvn test '
+               }
+            }
+        } 
+        
+        stage('MAVEN - Package') {
+           steps {
+                dir(Project_Path) {
+                 sh 'mvn package '
+               }
+           }
+        } 
+    
+        stage('Archive') {
+           steps {
+                 archiveArtifacts artifacts: '03-App-Code/petclinic-code/target/*.war', followSymlinks: false
+           }
+        } 
+        
+        stage('Publish Test Results') {
+           steps {
+                 junit '03-App-Code/petclinic-code/target/surefire-reports/*.xml'
+           }
+        } 
+    }
+}
+

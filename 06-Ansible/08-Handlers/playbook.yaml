@@ -1,0 +1,82 @@
+---
+
+- hosts: "prod:&web"
+  name: WebServer Deployment
+  vars: 
+    doc_root: "/var/www/html"
+    doc_conf: "/etc/apache2"
+    user: "Amit Vashist"
+    sitename: "Test WebSite 1" 
+    http_port: 8085
+
+#  vars_prompt: 
+#  - name: sitename
+#    prompt: What would be your web site name you want ?  
+  
+  tasks:
+  - name: Ansible Date Fact Exp.
+    debug: var=ansible_date_time.date
+
+  - debug: msg="Provided Site Name is {{sitename}}"
+ 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present
+    when:  ansible_os_family == "Debian"
+
+  - name: Install HTTPD Packages
+    yum: name=httpd state=present
+    when:  ansible_os_family == "RedHat"
+
+  - name: Deploy Custom Web Page 
+    copy: src=files/index.html dest={{doc_root}}/index.html 
+
+  - name: Deploy Custom info2 Page 
+    template: src=templates/info.j2 dest={{doc_root}}/info-2.html 
+
+  - name: Start HTTPD Service 
+    service: name=httpd state=started
+    when:  ansible_os_family == "RedHat"
+ 
+  - name: Start Apache Service 
+    service: name=apache2 state=started 
+    when:  ansible_os_family == "Debian"
+
+  - name: Deploy Custom Apache2 Config file 
+    template: src=templates/apache2.conf.j2 dest={{doc_conf}}/apache2.conf 
+
+  - name: Deploy Custom Apache2 Port Config file  
+    template: src=templates/ports.conf.j2 dest={{doc_conf}}/ports.conf
+    notify: 
+      - Restart Apache AV 
+      - amit 
+
+
+  - name: Check who AM I. 
+    command: whoami
+    register: username
+
+  - name: User Name is 
+    debug: var=username.stdout_lines 
+
+  - name: Check the Web File avaliability
+    command: ls {{doc_root}}/netmagics.html
+    register: result
+    ignore_errors: yes
+
+
+  - debug: msg="Unable to locate file netmagics.html" 
+    when: result|failed
+
+  - debug: msg="The file has been locate filename - netmagics.html" 
+    when: result|success
+
+  - name: Deploy Missing netmagics.html file to the respetive remote servers 
+    copy: src=files/netmagics.html dest={{doc_root}}/netmagics.html 
+    when: result|failed
+  
+  handlers: 
+  - name: Restart Apache AV 
+    service: name=apache2 state=restarted 
+    when:  ansible_os_family == "Debian"
+  - name: amit
+    shell: 'echo "Hello Handlers {{ansible_hostname}}" >> /tmp/handlers.txt' 

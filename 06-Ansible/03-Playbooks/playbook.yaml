@@ -1,0 +1,17 @@
+---
+
+- hosts: "prod:&web"
+  name: WebServer Deployment
+  tasks: 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present
+
+  - name: Start Apache Service 
+    service: name=apache2 state=started 
+
+
+- hosts: "prod"
+  name: Kernel Check
+  tasks:
+  - name: Check the Kernel Details
+    command: 'uname -a'  

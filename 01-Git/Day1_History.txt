@@ -1,0 +1,322 @@
+ ```
+ 1210  git --version 
+ 1211  mkdir myfirstproject
+ 1212  ls
+ 1213  cd myfirstproject/
+ 1214  ls
+ 1215  git status 
+ 1216  ls -a 
+ 1217  git init 
+ 1218  git status 
+ 1219  ls -a 
+ 1220  git config --list 
+ 1221  git config --global -list 
+ 1222  git config --global --list 
+ 1223  git config --global user.name "Amit Vashist" 
+ 1224  git config --global user.email "amitvashist7@outlook.com" 
+ 1225  git config --global --list 
+ 1226  cd 
+ 1227  ls -a 
+ 1228  cat .gitconfig 
+ 1229  cd - 
+ 1230  ls
+ 1231  git config --global --list 
+ 1232  git config --global core.editor vi
+ 1233  git config --global help.autocorrect 1
+ 1234  git config --global --list 
+ 1235  ls
+ 1236  echo "Hello World" > README.md
+ 1237  ls
+ 1238  git status 
+ 1239  git add README.md 
+ 1240  git status 
+ 1241  git commit -m "Added a new README.md file just for fun"
+ 1242  git status 
+ 1243  git log 
+ 1244  echo "Welcome to the world of Git" >> README.md 
+ 1245  cat README.md 
+ 1246  git status 
+ 1247  git add README.md 
+ 1248  git status 
+ 1249  git commit -m "Git Testing - Test 1" 
+ 1250  git status 
+ 1251  git log 
+ 1252  history 
+ 1253  git log
+ 1254  echo "Apple Pie" 
+ 1255  echo "Apple Pie" | git hash-object --stdin 
+ 1256  echo "Apple PiE" | git hash-object --stdin 
+ 1257  echo "Apple Pie" | git hash-object --stdin 
+ 1258  echo "Apple pie" | git hash-object --stdin 
+ 1259  echo "Apple Pie" | git hash-object --stdin -w 
+ 1260  ls
+ 1261  git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -t 
+ 1262  git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -p 
+ 1263  git cat-file 9a1a79d3841d891b82d868d04f1bf6d8f1f8e2da -p 
+ 1264  echo "Apple PiE" | git hash-object --stdin -w
+ 1265  git cat-file 9a1a79d3841d891b82d868d04f1bf6d8f1f8e2da -p 
+ 1266  ls -a 
+ 1267  cd .git/
+ 1268  ls
+ 1269  cd objects/
+ 1270  ls
+ 1271  ls -l 09
+ 1272  ls -l 23/991897e13e47ed0adb91a0082c31c82fe0cbe5 
+ 1273  cd ..
+ 1274  ls
+ 1275  cd logs/
+ 1276  ls
+ 1277  cd ..
+ 1278  ls
+ 1279  git log 
+ 1280  git diff  80973d..4ef500
+ 1281  git diff  4ef500..80973d
+ 1282  echo "Update the file for testing" >> README.md 
+ 1283  git commit -m "Git Testing - Test 2" 
+ 1284  git add README.md 
+ 1285  git commit -m "Git Testing - Test 2" 
+ 1286  git log 
+ 1287  git diff  80973d5..0d8eb5d
+ 1288  git diff  4ef5005..0d8eb5d
+ 1289  history 
+ 1290  ls
+ 1291  cat README.md 
+ 1292  vim README.md 
+ 1293  cat README.md 
+ 1294  echo "Test - 5" >> README.md 
+ 1295  cat README.md 
+ 1296  ls
+ 1297  git logs 
+ 1298  git status 
+ 1299  mkdir recipes
+ 1300  vim recipes/apple_pie.txt 
+ 1301  ls
+ 1302  git status 
+ 1303  cp -rf recipes menu
+ 1304  cd menu/
+ 1305  ls
+ 1306  rm -rf apple_pie.txt 
+ 1307  vim meenu.txt
+ 1308  ls
+ 1309  cd ..
+ 1310  ls
+ 1311  git status 
+ 1312  git add . 
+ 1313  git status 
+ 1314  git commit 
+ 1315  git logs 
+ 1316  git diff  0d8eb5d1..f828c5c0
+ 1317  ls
+ 1318  git logs 
+ 1319  git logs --oneline 
+ 1320  git logs 
+ 1321  git checkout 4ef500544fd79f5046cfd59803aa2a7c2b8b689e
+ 1322  git checkout f828c5c0ae69d2f2fab8ac3cde76a853a7ec1a26
+ 1323  ls -ltr 
+ 1324  git logs 
+ 1325  git checkout 4ef500544fd79f5046cfd59803aa2a7c2b8b689e
+ 1326  ls
+ 1327  ls -ltr 
+ 1328  cat README.md 
+ 1329  git status 
+ 1330  ls
+ 1331  cat README.md 
+ 1332  git checkout master
+ 1333  ls
+ 1334  cat README.md 
+ 1335  ls
+ 1336  rm -rf menu/meenu.txt 
+ 1337  vim menu/menu.txt 
+ 1338  ls
+ 1339  mv recipes recipe 
+ 1340  git status 
+ 1341  git add . 
+ 1342  git status 
+ 1343  git commit -m "New Menu & Recipe Files" 
+ 1344  git status 
+ 1345  git log 
+ 1346  ls
+ 1347  echo "Test 01
+ 1348  echo "Test 01" > Test-1.txt 
+ 1349  echo "UAT 01" > UAT-1.txt 
+ 1350  ls
+ 1351  git status 
+ 1352  git add . 
+ 1353  git status 
+ 1354  git reset HEAD UAT-1.txt
+ 1355  git status 
+ 1356  git commit -m "Added New Test-1 file" 
+ 1357  git status 
+ 1358  history 
+ 1359  git status 
+ 1360  git branch 
+ 1361  git log
+ 1362  git show HEAD 
+ 1363  cat .git/HEAD 
+ 1364  cat .git/refs/heads/master 
+ 1365  git add . ; git commit -m "Add a UAT file"
+ 1366  cat .git/HEAD 
+ 1367  cat .git/refs/heads/master 
+ 1368  git log 
+ 1369  git branch 
+ 1370  git branch uat 
+ 1371  git branch prod
+ 1372  git branch stage
+ 1373  git branch 
+ 1374  git branch -d uat
+ 1375  git branch -d stage 
+ 1376  git branch -d prod 
+ 1377  git branch 
+ 1378  ls
+ 1379  rm -rf Test-1.txt UAT-1.txt 
+ 1380  git add . ; git commit -m "Remove UAT & Test file"
+ 1381  git branch 
+ 1382  ls
+ 1383  git branch prod
+ 1384  git branch stage 
+ 1385  ls
+ 1386  git branch 
+ 1387  cat .git/HEAD 
+ 1388  cat .git/refs/heads/master 
+ 1389  git checkout stage
+ 1390  ls
+ 1391  git branch 
+ 1392  cat .git/HEAD 
+ 1393  cat .git/refs/heads/stage 
+ 1394  git checkout prod 
+ 1395  cat .git/HEAD 
+ 1396  cat .git/refs/heads/prod 
+ 1397  ls
+ 1398  mkdir prod
+ 1399  echo "This is my Production Branch" >> prod/prod.txt 
+ 1400  git add . ; git commit -m "New Prod file"
+ 1401  git logs 
+ 1402  cat .git/HEAD 
+ 1403  cat .git/refs/heads/prod 
+ 1404  echo "Test 2" >> prod/prod.txt 
+ 1405  git add . ; git commit -m "Test - 2 update"
+ 1406  cat .git/refs/heads/prod 
+ 1407  ls
+ 1408  cat prod/prod.txt 
+ 1409  git checkout stage 
+ 1410  ls
+ 1411  cat .git/HEAD 
+ 1412  cat .git/refs/heads/stage 
+ 1413  mkdir stage
+ 1414  echo "Hey Stage Branch" >> stage/stage.txt 
+ 1415  git add . ; git commit -m "New Stage folder & file has been added"
+ 1416  echo "Welcome to the Stage Branch" >> stage/stage-2.txt 
+ 1417  git add . ; git commit -m "New Stage2 file has been added"
+ 1418  cat .git/HEAD 
+ 1419  cat .git/refs/heads/stage 
+ 1420  git logs 
+ 1421  sl
+ 1422  ls
+ 1423  vim menu/menu.txt 
+ 1424  git add . ; git commit -m "Mango PIE"
+ 1425  git log --oneline 
+ 1426  git branch 
+ 1427  git checkout master 
+ 1428  ls
+ 1429  vim menu/menu.txt 
+ 1430  git add . ; git commit -m "Orange PIE"
+ 1431  git log --oneline 
+ 1432  git log --oneline --graph 
+ 1433  git checkout prod 
+ 1434  git log --oneline --graph 
+ 1435  ls
+ 1436  git checkout master 
+ 1437  git branch 
+ 1438  git merge stage 
+ 1439  vim menu/menu.txt 
+ 1440  git add . 
+ 1441  git commit -m "Menu.txt Conflict has been fixed" 
+ 1442  git status 
+ 1443  ls
+ 1444  git branch 
+ 1445  cat stage/stage.txt 
+ 1446  cat stage/stage-2.txt 
+ 1447  cat menu/menu.txt 
+ 1448  git log 
+ 1449  git log --oneline --graph 
+ 1450  ls
+ 1451  git merge prod
+ 1452  ls
+ 1453  git log --oneline --graph 
+ 1454  git checkout stage 
+ 1455  ls
+ 1456  git checkout master 
+ 1457  history 
+ 1458  ls
+ 1459  cd 
+ 1460  ls
+ 1461  git clone https://github.com/amitvashisttech/devops-netmagic-08-Aug-2022.git
+ 1462  ls
+ 1463  cd devops-netmagic-08-Aug-2022/
+ 1464  ls
+ 1465  cat README.md 
+ 1466  cat .gitignore 
+ 1467  git config --list 
+ 1468  ls
+ 1469  cd ..
+ 1470  ls
+ 1471  cd myfirstproject/
+ 1472  ls
+ 1473  git remote add origin https://github.com/amitvashisttech/devops-netmagic-08-Aug-2022.git
+ 1474  git branch -M master 
+ 1475  git branch 
+ 1476  git config --list 
+ 1477  git push -u origin master 
+ 1478  git config --list 
+ 1479  git branch 
+ 1480  git checkout main 
+ 1481  git pull 
+ 1482  git branch 
+ 1483  git checkout main 
+ 1484  ls
+ 1485  ls -a 
+ 1486  git merge master
+ 1487  vim README.md 
+ 1488  ls
+ 1489  git status 
+ 1490  git add . 
+ 1491  git commit -m "Master Branch has been merged" 
+ 1492  git log --oneline --graph
+ 1493  git push 
+ 1494  ls
+ 1495  cd ..
+ 1496  ls
+ 1497  cd devops-netmagic-08-Aug-2022/
+ 1498  ls
+ 1499  git pull 
+ 1500  ls
+ 1501  mkdir 01-Git
+ 1502  ls
+ 1503  mv * 01-Git/
+ 1504  ls
+ 1505  mv 01-Git/README.md . 
+ 1506  ls
+ 1507  git add . ; git commit -m "New Git Folder Created"; git push  
+ 1508  ls
+ 1509  cat .gitignore 
+ 1510  echo "Testing Git Ignore" >> amit.tfstate 
+ 1511  echo "Testing Git Ignore" >> amit.txt 
+ 1512  ls -ltr 
+ 1513  mv  amit.t* 01-Git/
+ 1514  ls
+ 1515  git status 
+ 1516  ls -ltr 01-Git/
+ 1517  git add . ; git commit -m "Testing Git Ignore"; git push  
+ 1518  echo "Hello GitHub" >> amit.txt 
+ 1519  git add . ; git commit -m "Hello GitHub"; git push  
+ 1520  ls
+ 1521  rm -rf amit.txt 
+ 1522  echo "Hello GitHub" >> 01-Git/amit.txt 
+ 1523  git add . ; git commit -m "Hello GitHub"; git push  
+ 1524  echo "Hello GitHub 123" >> 01-Git/amit.txt 
+ 1525  git add . ; git commit -m "Hello GitHub"; git push  
+ 1526  ls
+ 1527  cd 01-Git/
+ 1528  ls
+ 1529  history >> Day1_History.txt 
+```

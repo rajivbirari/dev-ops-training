@@ -1,0 +1,8 @@
+---
+# vars file for webserver
+doc_root: "/var/www/html"
+doc_conf: "/etc/apache2"
+user: "Amit Vashist"
+sitename: "Test WebSite 1"
+http_port: 8084
+
